@@ -1,8 +1,5 @@
 name: Terraform
 on:
-  push:
-    paths:
-    - 'terraform/**'
   pull_request:
     paths:
     - 'terraform/**'
@@ -24,9 +21,6 @@ jobs:
         working-directory: terraform
       - id: plan
         run: terraform plan -no-color
-        working-directory: terraform
-      - run:  terraform apply -auto-approve -no-color
-        if: github.ref == 'refs/heads/master'
         working-directory: terraform
       - uses: actions/github-script@0.9.0
         if: github.event_name == 'pull_request'
