@@ -3,6 +3,20 @@ tasks:
   default:
     cmds:
       - task -l
+  terraform:fmt:
+    dir: ./terraform
+    desc: terraform format code
+    cmds:
+     - terraform init
+     - terraform fmt
+     - terraform validate
+  terraform:plan:
+    deps:
+      - terraform:fmt
+    dir: ./terraform
+    desc: terraform plan of changes
+    cmds:
+     - terraform plan
   skaffold:build:
     desc: build app images
     cmds:

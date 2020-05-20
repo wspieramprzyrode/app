@@ -1,0 +1,46 @@
+name: Terraform
+on:
+  push:
+    paths:
+    - 'terraform/**'
+  pull_request:
+    paths:
+    - 'terraform/**'
+jobs:
+  terraform-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - run: terraform init
+        working-directory: terraform
+      - run: terraform fmt
+        working-directory: terraform
+      - run: terraform validate
+        working-directory: terraform
+      - id: plan
+        run: terraform plan -no-color
+        working-directory: terraform
+      - run:  terraform apply -auto-approve -no-color
+        if: github.ref == 'refs/heads/master'
+        working-directory: terraform
+      - uses: actions/github-script@0.9.0
+        if: github.event_name == 'pull_request'
+        env:
+          STDOUT: "```terraform\n${{ steps.plan.outputs.stdout }}```"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: terraform
+          script: |
+            const output = `<details><summary>tf plan:</summary>\n\n${process.env.STDOUT}\n\n</details>`;
+
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
