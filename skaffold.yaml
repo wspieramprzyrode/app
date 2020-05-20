@@ -1,0 +1,7 @@
+apiVersion: skaffold/v2beta1
+kind: Config
+metadata:
+  name: wspieramprzyrode
+build:
+  tagPolicy:
+    sha256: {}

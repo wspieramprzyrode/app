@@ -1,0 +1,9 @@
+version: '2'
+tasks:
+  default:
+    cmds:
+      - task -l
+  skaffold:build:
+    desc: build app images
+    cmds:
+      - skaffold build
