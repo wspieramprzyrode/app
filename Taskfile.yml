@@ -21,3 +21,11 @@ tasks:
     desc: build app images
     cmds:
       - skaffold build
+  translate:upload:
+    desc: upload files to crowdin translate service
+    cmds:
+      - crowdin upload sources --config ./crowdin.yaml --auto-update -b master
+  translate:download:
+    desc: download translates files from crowdin
+    cmds:
+      - crowdin download --config ./crowdin.yaml -b master

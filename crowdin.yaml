@@ -1,0 +1,18 @@
+base_path: "./"
+preserve_hierarchy: true
+project_id_env: "CROWDIN_PROJECT_ID"
+api_token_env: "CROWDIN_API_TOKEN"
+files:
+  -
+    source: '/docusaurus/docs/*.md'
+    translation: '/docusaurus/website/translated_docs/%locale%/%original_file_name%'
+    languages_mapping: &anchor
+      locale:
+        'en': 'en'
+        'de': 'de'
+        'fr': 'fr'
+        'pl': 'pl'
+  -
+    source: '/docusaurus/website/i18n/en.json'
+    translation: '/docusaurus/website/i18n/%locale%.json'
+    languages_mapping: *anchor

@@ -1,3 +1,19 @@
+---
+id: cicd
+title: CI/CD
+sidebar_label: CI/CD
+---
+
+
+## GitHub Actions
+
+All build and deployment process using github actions
+
+### Add taskfile and k8s tools to github workflow
+
+Example workflow
+
+```yaml
 name: Install Tools
 on: [push]
 jobs:
@@ -20,3 +36,4 @@ jobs:
       - name: List available tasks
         run: |
           task -l
+```
