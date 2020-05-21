@@ -24,7 +24,7 @@ const siteConfig = {
   title: 'docs.wspieramprzyrode.pl ', // Title for your website.
   tagline: 'Application Documentation',
   url: 'https://docs.wspieramprzyrode.pl', // Your website URL
-  baseUrl: '/app/',
+  baseUrl: '/',
   projectName: 'app',
   organizationName: 'wspieramprzyrode',
   // For top-level user or org sites, the organization is still the same.
