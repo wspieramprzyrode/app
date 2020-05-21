@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: 'docs.wspieramprzyrode.pl ', // Title for your website.
   tagline: 'Application Documentation',
-  url: 'https://wspieramprzyrode.github.io', // Your website URL
+  url: 'https://docs.wspieramprzyrode.pl', // Your website URL
   baseUrl: '/app/',
   projectName: 'app',
   organizationName: 'wspieramprzyrode',
