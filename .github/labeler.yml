@@ -2,3 +2,5 @@ terraform:
   - terraform/**/*
 ui:
   - ui/**/*
+docs:
+  - docusaurus/**/*
