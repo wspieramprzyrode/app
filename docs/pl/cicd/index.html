@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="pl"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>CI/CD · docs.wspieramprzyrode.pl </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## GitHub Actions"/><meta name="docsearch:language" content="pl"/><meta property="og:title" content="CI/CD · docs.wspieramprzyrode.pl "/><meta property="og:type" content="website"/><meta property="og:url" content="https://wspieramprzyrode.github.io/app/"/><meta property="og:description" content="## GitHub Actions"/><meta property="og:image" content="https://wspieramprzyrode.github.io/app/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://wspieramprzyrode.github.io/app/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/app/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/app/js/scrollSpy.js"></script><link rel="stylesheet" href="/app/css/main.css"/><script src="/app/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/app/pl"><img class="logo" src="/app/img/favicon.ico" alt="docs.wspieramprzyrode.pl "/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/app/docs/pl/infrastructure" target="_self">Infrastruktura</a></li><li class="siteNavItemActive"><a href="/app/docs/pl/cicd" target="_self">CI/CD</a></li><li class=""><a href="/app/pl/help" target="_self">Pomoc</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/app/img/language.svg" alt="Languages icon"/>Polski</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/app/docs/en/cicd">English</a></li><li><a href="https://crowdin.com/project/wspieramprzyrode" target="_blank" rel="noreferrer noopener">Pomóż w tłumaczeniu</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/wspieramprzyrode/pl" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">CI/CD</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="github-actions"></a><a href="#github-actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GitHub Actions</h2>
+<p>Wszystkie procesy budowania i wdrażania przy użyciu github actions</p>
+<h3><a class="anchor" aria-hidden="true" id="dodanie-taskfile-i-narzędzia-k8-do-github-workflow"></a><a href="#dodanie-taskfile-i-narzędzia-k8-do-github-workflow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dodanie Taskfile i narzędzia k8 do github workflow</h3>
+<p>Example workflow</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Tools</span>
+<span class="hljs-attr">on:</span> <span class="hljs-string">[push]</span>
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">install-tools:</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
+    <span class="hljs-attr">env:</span>
+      <span class="hljs-attr">GITHUB_TOKEN:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">k8s</span> <span class="hljs-string">tools</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">kubectl:</span> <span class="hljs-string">'1.7.5'</span>
+          <span class="hljs-attr">helm:</span> <span class="hljs-string">'3.2.1'</span>
+          <span class="hljs-attr">skaffold:</span> <span class="hljs-string">'1.9.1'</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">daisaru11/setup-cd-tools@v1</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">Taskfile</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">Arduino/actions/setup-taskfile@master</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">version:</span> <span class="hljs-string">'2.x'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">List</span> <span class="hljs-string">available</span> <span class="hljs-string">tasks</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">|
+          task -l
+</span></code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#github-actions">GitHub Actions</a><ul class="toc-headings"><li><a href="#dodanie-taskfile-i-narzędzia-k8-do-github-workflow">Dodanie Taskfile i narzędzia k8 do github workflow</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/app/" class="nav-home"><img src="/app/img/favicon.ico" alt="docs.wspieramprzyrode.pl " width="66" height="58"/></a><div><a href="https://github.com/wspieramprzyrode">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/wspieramprzyrode/app/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/app/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 WspieramPrzyrode.pl</section></footer></div></body></html>
