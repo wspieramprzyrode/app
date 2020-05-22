@@ -19,3 +19,6 @@ variable "cloudflare_email" {
 variable "github_repository" {
   type = string
 }
+var "ambassador_licence" {
+  type = string
+}

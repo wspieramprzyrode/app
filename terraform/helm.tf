@@ -47,4 +47,8 @@ resource "helm_release" "ambassador" {
   values = [
     "${file("helm-configs/ambassador.yaml")}"
   ]
+  set_sensitive {
+    name  = "licenseKey.value"
+    value = var.ambassador_licence
+  }
 }
