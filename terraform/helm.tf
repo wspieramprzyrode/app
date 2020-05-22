@@ -41,7 +41,7 @@ resource "helm_release" "ambassador" {
   repository       = "https://www.getambassador.io"
   chart            = "ambassador"
   max_history      = 10
-  version          = "1.4.3"
+  version          = "6.3.6"
   create_namespace = true
   namespace        = "ambassador"
   values = [
