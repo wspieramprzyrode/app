@@ -2,4 +2,4 @@ authService:
   create: false
 service:
   annotations:
-    external-dns.alpha.kubernetes.io/hostname=*.wspieramprzyrode.pl.
+    external-dns.alpha.kubernetes.io/hostname: "*.wspieramprzyrode.pl."
