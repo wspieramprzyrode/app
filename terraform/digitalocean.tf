@@ -26,6 +26,6 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
 resource "digitalocean_project_resources" "do_project_resources" {
   project = digitalocean_project.do_project.id
   resources = [
-    digitalocean_kubernetes_cluster.cluster.id,digitalocean_tag.project_tag.id,digitalocean_tag.cluster_tag.id
+    digitalocean_kubernetes_cluster.cluster.id
   ]
 }
