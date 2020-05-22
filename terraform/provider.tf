@@ -25,3 +25,7 @@ provider "helm" {
     )
   }
 }
+
+provider "github" {
+  version = "~> 2.8"
+}
