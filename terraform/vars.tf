@@ -22,3 +22,9 @@ variable "github_repository" {
 variable "ambassador_licence" {
   type = string
 }
+variable "crowdin_api_token" {
+  type = string
+}
+variable "crowdin_project_id" {
+  type = string
+}
