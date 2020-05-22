@@ -3,3 +3,5 @@ authService:
 service:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: "*.wspieramprzyrode.pl."
+env:
+  AMBASSADOR_KNATIVE_SUPPORT: true
