@@ -22,10 +22,3 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
     tags       = [digitalocean_tag.project_tag.id, digitalocean_tag.cluster_tag.id]
   }
 }
-
-resource "digitalocean_project_resources" "do_project_resources" {
-  project = digitalocean_project.do_project.id
-  resources = [
-    digitalocean_kubernetes_cluster.cluster.id
-  ]
-}
