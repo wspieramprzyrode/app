@@ -20,3 +20,6 @@ We using kubernetes deployed to digitalocean cloud with:
 
 - metrics-server
 - external-dns
+- ambassador
+
+all deployments are described in terraform manifests.
