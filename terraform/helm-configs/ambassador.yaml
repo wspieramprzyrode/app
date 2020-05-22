@@ -1,0 +1,5 @@
+authService:
+  create: false
+service:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname=gw.wspieramprzyrode.pl.
