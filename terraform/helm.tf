@@ -21,16 +21,14 @@ resource "helm_release" "external-dns" {
   chart      = "external-dns"
   version    = "2.20.4"
   namespace  = "kube-system"
-  set {
-    name  = "provider"
-    value = "cloudflare"
-  }
-
+  values = [
+    "${file("helm-configs/external-dns.yaml")}"
+  ]
   set_sensitive {
     name  = "cloudflare.apiKey"
     value = var.cloudflare_api_key
   }
-  set {
+  set_sensitive {
     name  = "cloudflare.email"
     value = var.cloudflare_email
   }

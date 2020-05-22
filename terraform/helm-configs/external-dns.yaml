@@ -1,0 +1,7 @@
+provider: cloudflare
+sources:
+  - service
+  - ingress
+  - crd
+crd:
+  create: true
