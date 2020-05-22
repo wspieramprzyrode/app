@@ -19,3 +19,4 @@ We using cloudflare to manage dns services for domain ```wspieramprzyrode.pl```
 We using kubernetes deployed to digitalocean cloud with:
 
 - metrics-server
+- external-dns

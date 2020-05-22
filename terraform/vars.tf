@@ -10,3 +10,9 @@ variable "k8s_cluster_instance_type" {
   type    = string
   default = "s-1vcpu-2gb"
 }
+variable "cloudflare_api_key" {
+  type = string
+}
+variable "cloudflare_email" {
+  type = string
+}

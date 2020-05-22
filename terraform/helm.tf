@@ -14,3 +14,24 @@ resource "helm_release" "metrics-server" {
     value = "--kubelet-preferred-address-types=InternalIP"
   }
 }
+
+resource "helm_release" "external-dns" {
+  name       = "external-dns"
+  repository = "https://charts.bitnami.com/bitnami"
+  chart      = "external-dns"
+  version    = "2.20.4"
+  namespace  = "kube-system"
+  set {
+    name  = "provider"
+    value = "cloudflare"
+  }
+
+  set_sensitive {
+    name  = "cloudflare.apiKey"
+    value = var.cloudflare_api_key
+  }
+  set {
+    name  = "cloudflare.email"
+    value = var.cloudflare_email
+  }
+}
