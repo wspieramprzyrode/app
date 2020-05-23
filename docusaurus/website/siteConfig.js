@@ -35,6 +35,8 @@ const siteConfig = {
   headerLinks: [
     { doc: 'infrastructure', label: 'Infrastructure' },
     { doc: 'cicd', label: 'CI/CD' },
+    { doc: 'tools', label: 'Tools' },
+    { doc: 'ui', label: 'UI' },
     { page: "help", label: "Help" },
     { languages: true },
   ],
