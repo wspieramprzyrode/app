@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Wspieram Przyrodę"
+  license:
+    name: "MIT"
+servers:
+  - url: http://api.wspieramprzyrode.pl/v1
+    description: Main (production) server
+  - url: http://staging-apiwspieramprzyrode.pl/v1
+    description: Optional server description, e.g. Internal staging server for testing
+tags:
+  - name: inventory
+    description: Invetory services
+paths:
+  /inventory/categories:
+    get:
+      summary: "Returns object category inventories"
+      operationId: "getObjectsCateries"
+      tags:
+        - inventory
+      parameters: []
+      responses:
+        "200":
+          $ref: "#/components/responses/ListOfObjectCategories"
+  /inventory/objects:
+    get:
+      tags:
+        - inventory
+      summary: "Returns object inventories"
+      description: "Returns list object in inventory"
+      operationId: "getObjects"
+      parameters: []
+      responses:
+        "200":
+          $ref: "#/components/responses/ListOfObjects"
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+    ObjectCategoryId:
+      type: string
+      format: uuid
+    ObjectCategory:
+      type: "object"
+      title: Inventory Category
+      required:
+        - name
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectCategoryId'
+        name:
+          type: "string"
+    Coordinates:
+      type: "object"
+      title: Coordinates
+      required:
+        - lat
+        - lng
+      properties:
+        lat:
+          type: number
+          format: float
+        lng:
+          type: number
+          format: float
+    Object:
+      type: "object"
+      title: Inventory object
+      required:
+        - category_id
+        - coordinates
+      properties:
+        id:
+          type: "string"
+        category_id:
+          $ref: '#/components/schemas/ObjectCategoryId'
+        coordinates:
+           $ref: "#/components/schemas/Coordinates"
+
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ListOfObjectCategories:
+      description: List of inventory categories
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ObjectCategory'
+          example:
+            - id: 58162552-24EA-40D5-B40A-664190D410BC
+              name: Budka lęgowa
+            - id: 0BDB9887-B9F2-4A34-BD6F-61A7E88C65D3
+              name: Paśnik
+            - id: 334C9697-58F0-4766-A86E-371D2BA1EE36
+              name: Pomnik przyrody
+    ListOfObjects:
+      description: List of inventory objects
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Object'
+          example:
+            - id: 96D0EE07-3EF9-426B-8E03-9475A3F70511
+              category_id: 58162552-24EA-40D5-B40A-664190D410BC
+              coordinates:
+                lat: 50.306472
+                lng: 18.602258
+            - id: 40749299-E630-4276-92A9-0856E449F19A
+              categoryId: 58162552-24EA-40D5-B40A-664190D410BC
+              coordinates:
+                lat: 50.306880
+                lng: 118.604721
