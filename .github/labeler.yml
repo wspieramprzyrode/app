@@ -4,3 +4,4 @@ ui:
   - ui/**/*
 documentation:
   - docusaurus/**/*
+  - oas3.yaml
