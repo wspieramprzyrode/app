@@ -11,12 +11,12 @@ servers:
     description: Optional server description, e.g. Internal staging server for testing
 tags:
   - name: inventory
-    description: Invetory services
+    description: Inventory services
 paths:
   /inventory/categories:
     get:
       summary: "Returns object category inventories"
-      operationId: "getObjectsCateries"
+      operationId: "GetObjectCategories"
       tags:
         - inventory
       parameters: []
@@ -29,11 +29,39 @@ paths:
         - inventory
       summary: "Returns object inventories"
       description: "Returns list object in inventory"
-      operationId: "getObjects"
+      operationId: "GetObjects"
       parameters: []
       responses:
         "200":
           $ref: "#/components/responses/ListOfObjects"
+  /inventory/objects/{id}:
+    get:
+      tags:
+        - inventory
+      summary: "Returns inventory object"
+      description: "Returns details of object"
+      operationId: "GetObjectByID"
+      parameters:
+        - in: header
+          name: X-Request-ID
+          schema:
+            type: string
+          required: true
+          example:
+            X-Request-ID: "0353C229-9522-48BA-8EF3-854EFDDED212"
+        - in: path
+          name: id
+          description: Object ID
+          required: true
+          schema:
+            type: string
+          example:
+            id: "96D0EE07-3EF9-426B-8E03-9475A3F70511"
+      responses:
+        "200":
+          $ref: "#/components/responses/GetObject"
+        "404":
+          $ref: "#/components/responses/NotFound"
 components:
   schemas:
     Error:
@@ -72,6 +100,9 @@ components:
         lng:
           type: number
           format: float
+    ObjectId:
+      type: string
+      format: uuid
     Object:
       type: "object"
       title: Inventory object
@@ -80,11 +111,11 @@ components:
         - coordinates
       properties:
         id:
-          type: "string"
+          $ref: "#/components/schemas/ObjectId"
         category_id:
           $ref: '#/components/schemas/ObjectCategoryId'
         coordinates:
-           $ref: "#/components/schemas/Coordinates"
+          $ref: "#/components/schemas/Coordinates"
 
   responses:
     NotFound:
@@ -93,6 +124,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: resource not found
     Unauthorized:
       description: Unauthorized
       content:
@@ -133,3 +167,15 @@ components:
               coordinates:
                 lat: 50.306880
                 lng: 118.604721
+    GetObject:
+      description: Get Object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+          example:
+            id: 96D0EE07-3EF9-426B-8E03-9475A3F70511
+            category_id: 58162552-24EA-40D5-B40A-664190D410BC
+            coordinates:
+              lat: 50.306472
+              lng: 18.602258
