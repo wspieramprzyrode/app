@@ -29,3 +29,9 @@ provider "helm" {
 provider "github" {
   version = "~> 2.8"
 }
+
+provider "google-beta" {
+  version = "~> 3.23"
+  region  = "europe-west1"
+  project = "wspieramprzyrode"
+}
