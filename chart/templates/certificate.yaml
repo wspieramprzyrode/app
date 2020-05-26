@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ include "chart.fullname" . }}
+spec:
+  secretName: {{ include "chart.fullname" . }}-tls
+  commonName: {{ .Values.global.domain }}
+  dnsNames:
+  - {{ .Values.global.domain }}
+  - {{ .Values.global.apiDomainPrefix}}.{{ .Values.global.domain }}
+  - {{ .Values.global.uiDomainPrefix}}.{{ .Values.global.domain }}
+  issuerRef:
+    name: {{ .Values.global.certManagerClusterIssuer}}
+    kind: ClusterIssuer

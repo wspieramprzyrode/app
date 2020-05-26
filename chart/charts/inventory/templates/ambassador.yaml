@@ -1,0 +1,10 @@
+{{- if .Values.global.ambassador.enabled -}}
+apiVersion: getambassador.io/v1
+kind: Mapping
+metadata:
+  name: {{ include "inventory.fullname" . }}
+spec:
+  prefix: /v1/inventory/
+  service: {{ include "inventory.fullname" . }}
+  host: {{ .Values.global.apiDomainPrefix}}.{{ .Values.global.domain }}
+{{- end }}

@@ -1,0 +1,41 @@
+{{- if .Values.global.ambassador.enabled -}}
+{{- if .Values.global.ambassador.tls -}}
+apiVersion: getambassador.io/v1
+kind: TLSContext
+metadata:
+  name: {{ include "chart.fullname" . }}
+spec:
+  hosts:
+    - {{ .Values.global.apiDomainPrefix}}.{{ .Values.global.domain }}
+    - {{ .Values.global.uiDomainPrefix}}.{{ .Values.global.domain }}
+  secret: {{ include "chart.fullname" . }}-tls
+  acmeProvider:
+    authority: none
+{{- end }}
+
+---
+
+apiVersion: getambassador.io/v2
+kind: Host
+metadata:
+  name: {{ include "chart.fullname" . }}-ui
+spec:
+  hostname: {{ .Values.global.uiDomainPrefix}}.{{ .Values.global.domain }}
+  acmeProvider:
+    authority: none
+  tlsSecret:
+    name: {{ include "chart.fullname" . }}-tls
+
+---
+
+apiVersion: getambassador.io/v2
+kind: Host
+metadata:
+  name: {{ include "chart.fullname" . }}-api
+spec:
+  hostname: {{ .Values.global.apiDomainPrefix}}.{{ .Values.global.domain }}
+  acmeProvider:
+    authority: none
+  tlsSecret:
+    name: {{ include "chart.fullname" . }}-tls
+{{- end }}

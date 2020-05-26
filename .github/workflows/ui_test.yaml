@@ -38,17 +38,19 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     needs: test
-    name: Docker Build, Tag, Push
+    name: Docker Build, Push
     if: github.ref == 'refs/heads/master'
     steps:
     - name: Checkout
       uses: actions/checkout@master
+    - uses: benjlevesque/short-sha@v1.1
+      id: short-sha
     - name: Publish to docker registry
-      uses: mr-smithers-excellent/docker-build-push@v3
+      id: docker-push
+      uses: whoan/docker-build-with-cache-action@v5
       with:
-        image: wspieramprzyrode/ui
+        image_name: wspieramprzyrode/ui
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: docker.io
-        directory: ui
-        dockerfile: ui/Dockerfile
+        context: ui
+        image_tag: ${{ steps.short-sha.outputs.sha }}

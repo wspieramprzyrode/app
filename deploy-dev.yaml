@@ -1,0 +1,12 @@
+global:
+  domain: wspieramprzyrode.pl
+  apiDomainPrefix: api-dev
+  uiDomainPrefix: dev
+  ambassador:
+    enabled: true
+    tls: false
+inventory:
+  enabled: true
+  mode: debug
+  image:
+    tag: dev

@@ -57,12 +57,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
+    - uses: benjlevesque/short-sha@v1.1
+      id: short-sha
     - name: Publish to docker registry
-      uses: mr-smithers-excellent/docker-build-push@v3
+      id: docker-push
+      uses: whoan/docker-build-with-cache-action@v5
       with:
-        image: wspieramprzyrode/docs
+        image_name: wspieramprzyrode/docs
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: docker.io
-        directory: docusaurus
-        dockerfile: docusaurus/Dockerfile
+        context: docusaurus
+        image_tag: ${{ steps.short-sha.outputs.sha }}
