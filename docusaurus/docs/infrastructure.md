@@ -1,7 +1,6 @@
 ---
 id: infrastructure
 title: Infrastructure
-sidebar_label: Infrastructure
 ---
 
 
@@ -18,10 +17,3 @@ We using cloudflare to manage dns services for domain ```wspieramprzyrode.pl```
 
 ## Kubernetes
 
-We using kubernetes deployed to digitalocean cloud with:
-
-- metrics-server
-- external-dns
-- ambassador
-
-all deployments are described in terraform manifests.

@@ -8,7 +8,7 @@
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
     "crowdin-upload": "crowdin upload sources --config ../../crowdin.yaml --auto-update -b master",
-    "crowdin-download": "crowdin  download --config ../../crowdin.yaml -b master"
+    "crowdin-download": "crowdin download --config ../../crowdin.yaml -b master"
   },
   "devDependencies": {
     "docusaurus": "^1.14.4"

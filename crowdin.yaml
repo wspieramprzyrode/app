@@ -7,9 +7,6 @@ files:
     translation: '/docusaurus/website/translated_docs/%locale%/%original_file_name%'
     languages_mapping: &anchor
       locale:
-        'en': 'en'
-        'de': 'de'
-        'fr': 'fr'
         'pl': 'pl'
   -
     source: '/docusaurus/website/i18n/en.json'

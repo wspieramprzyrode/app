@@ -1,2 +1,22 @@
 {
+    "docs": {
+        "Documentation": [
+            "index"
+        ],
+        "Infrastructure": [
+            "terraform",
+            "kubernetes"
+        ],
+        "CI/CD": [
+            "cicd"
+        ],
+        "Web Application": [
+            "web",
+            "ui",
+            "inventory"
+        ],
+        "Mobile Application": [
+            "mobile"
+        ]
+    }
 }
