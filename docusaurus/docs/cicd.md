@@ -1,9 +1,7 @@
 ---
 id: cicd
-title: CI/CD
-sidebar_label: CI/CD
+title: GitHub Actions
 ---
-
 
 ## GitHub Actions
 

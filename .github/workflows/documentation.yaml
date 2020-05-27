@@ -49,3 +49,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docusaurus/website/build/app
           cname: docs.wspieramprzyrode.pl
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-deploy
+    name: Docker Build, Tag, Push
+    if: github.ref == 'refs/heads/master'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Publish to docker registry
+      uses: mr-smithers-excellent/docker-build-push@v3
+      with:
+        image: app/docs
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        directory: docusaurus
+        dockerfile: docusaurus/Dockerfile
