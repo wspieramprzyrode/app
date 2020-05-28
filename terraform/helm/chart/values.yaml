@@ -1,0 +1,10 @@
+nameOverride: ""
+fullnameOverride: ""
+letsencrypt:
+  email: ""
+  stagging: false
+  production: false
+cloudflare:
+  enabled: false
+  apiToken: ""
+  email: ""

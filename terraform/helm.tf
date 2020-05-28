@@ -24,7 +24,7 @@ resource "helm_release" "external-dns" {
   max_history = 10
   namespace   = "kube-system"
   values = [
-    "${file("helm-configs/external-dns.yaml")}"
+    "${file("helm/configs/external-dns.yaml")}"
   ]
   set_sensitive {
     name  = "cloudflare.apiKey"
@@ -45,10 +45,48 @@ resource "helm_release" "ambassador" {
   create_namespace = true
   namespace        = "ambassador"
   values = [
-    "${file("helm-configs/ambassador.yaml")}"
+    "${file("helm/configs/ambassador.yaml")}"
   ]
   set_sensitive {
     name  = "licenseKey.value"
     value = var.ambassador_licence
+  }
+}
+
+resource "helm_release" "cert-manager" {
+  name             = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  max_history      = 10
+  version          = "v0.15.1"
+  create_namespace = true
+  namespace        = "cert-manager"
+  values = [
+    "${file("helm/configs/cert-manager.yaml")}"
+  ]
+}
+
+resource "helm_release" "cluster-resources" {
+  depends_on = [
+    helm_release.cert-manager
+  ]
+  name             = "cluster-common-resources"
+  create_namespace = true
+  namespace        = "app-system"
+  chart            = "./helm/chart"
+  values = [
+    "${file("helm/configs/cluster-resources.yaml")}"
+  ]
+  set_sensitive {
+    name  = "cloudflare.apiToken"
+    value = var.cloudflare_api_key
+  }
+  set_sensitive {
+    name  = "cloudflare.email"
+    value = var.cloudflare_email
+  }
+  set_sensitive {
+    name  = "letsencrypt.email"
+    value = var.letsencrypt_email
   }
 }

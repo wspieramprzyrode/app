@@ -1,0 +1,23 @@
+{{- if .Values.letsencrypt.production -}}
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  namespace: cert-manager
+spec:
+  acme:
+    email: {{ .Values.letsencrypt.email }}
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod-issuer-account-key
+    solvers:
+{{- if .Values.cloudflare.enabled -}}
+    - dns01:
+        cloudflare:
+          email: {{ .Values.cloudflare.email }}
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            namespace: {{ .Release.Namespace }}
+            key: api-token
+{{- end -}}
+{{- end }}
