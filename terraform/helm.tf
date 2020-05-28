@@ -65,3 +65,28 @@ resource "helm_release" "cert-manager" {
     "${file("helm/configs/cert-manager.yaml")}"
   ]
 }
+
+resource "helm_release" "cluster-resources" {
+  depends_on = [
+    helm_release.cert-manager
+  ]
+  name             = "cluster-common-resources"
+  create_namespace = true
+  namespace        = "app-system"
+  chart            = "./helm/chart"
+  values = [
+    "${file("helm/configs/cluster-resources.yaml")}"
+  ]
+  set_sensitive {
+    name  = "cloudflare.apiToken"
+    value = var.cloudflare_api_key
+  }
+  set_sensitive {
+    name  = "cloudflare.email"
+    value = var.cloudflare_email
+  }
+  set_sensitive {
+    name  = "letsencrypt.email"
+    value = var.letsencrypt_email
+  }
+}

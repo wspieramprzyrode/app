@@ -28,3 +28,6 @@ variable "crowdin_api_token" {
 variable "crowdin_project_id" {
   type = string
 }
+variable "letsencrypt_email" {
+  type = string
+}
