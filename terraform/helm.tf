@@ -24,7 +24,7 @@ resource "helm_release" "external-dns" {
   max_history = 10
   namespace   = "kube-system"
   values = [
-    "${file("helm-configs/external-dns.yaml")}"
+    "${file("helm/configs/external-dns.yaml")}"
   ]
   set_sensitive {
     name  = "cloudflare.apiKey"
@@ -45,10 +45,23 @@ resource "helm_release" "ambassador" {
   create_namespace = true
   namespace        = "ambassador"
   values = [
-    "${file("helm-configs/ambassador.yaml")}"
+    "${file("helm/configs/ambassador.yaml")}"
   ]
   set_sensitive {
     name  = "licenseKey.value"
     value = var.ambassador_licence
   }
+}
+
+resource "helm_release" "cert-manager" {
+  name             = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  max_history      = 10
+  version          = "v0.15.1"
+  create_namespace = true
+  namespace        = "cert-manager"
+  values = [
+    "${file("helm/configs/cert-manager.yaml")}"
+  ]
 }
