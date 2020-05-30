@@ -11,7 +11,7 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod-issuer-account-key
     solvers:
-{{- if .Values.cloudflare.enabled -}}
+{{- if .Values.cloudflare.enabled }}
     - dns01:
         cloudflare:
           email: {{ .Values.cloudflare.email }}
