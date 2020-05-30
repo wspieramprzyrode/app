@@ -1,5 +1,5 @@
 cloudflare:
   enabled: true
-letencrypt:
+letsencrypt:
   enabled: true
   production: true
