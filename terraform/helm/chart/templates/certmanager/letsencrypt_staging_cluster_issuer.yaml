@@ -14,8 +14,8 @@ spec:
     - dns01:
         cloudflare:
           email: {{ .Values.cloudflare.email }}
-          apiTokenSecretRef:
-            name: cloudflare-api-token-secret
-            key: api-token
+          apiKeySecretRef:
+            name: cloudflare-api-key-secret
+            key: api-key
 {{- end -}}
 {{- end }}
