@@ -20,9 +20,11 @@ data "google_firebase_web_app_config" "firebase_app" {
 }
 
 resource "google_service_account" "wpieramprzyrode_api_dev_service_account" {
+  provider   = google-beta
   account_id   = "wpieramprzyrode-api-dev"
   display_name = "Wspieram Przyrode API dev account"
 }
 resource "google_service_account_key" "wpieramprzyrode_api_dev_key" {
+  provider   = google-beta
   service_account_id = google_service_account.wpieramprzyrode_api_dev_service_account.name
 }
