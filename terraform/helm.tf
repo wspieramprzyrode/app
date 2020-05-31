@@ -66,9 +66,17 @@ resource "helm_release" "cert-manager" {
   ]
 }
 
+resource "kubernetes_namespace" "k8s_namespace_dev" {
+  metadata {
+    name = "dev"
+  }
+}
+
 resource "helm_release" "cluster-resources" {
   depends_on = [
-    helm_release.cert-manager
+    helm_release.cert-manager,
+    google_service_account_key.wpieramprzyrode_api_dev_key,
+    kubernetes_namespace.k8s_namespace_dev
   ]
   name             = "cluster-common-resources"
   create_namespace = true
@@ -88,5 +96,9 @@ resource "helm_release" "cluster-resources" {
   set_sensitive {
     name  = "letsencrypt.email"
     value = var.letsencrypt_email
+  }
+  set_sensitive {
+    name  = "gceCredentialsFileDev"
+    value = google_service_account_key.wpieramprzyrode_api_dev_key.private_key
   }
 }

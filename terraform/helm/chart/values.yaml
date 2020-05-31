@@ -8,3 +8,4 @@ cloudflare:
   enabled: false
   apiToken: ""
   email: ""
+gceCredentialsFile: ""
