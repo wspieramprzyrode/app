@@ -30,9 +30,10 @@ resource "google_service_account_key" "wpieramprzyrode_api_dev_key" {
   service_account_id = google_service_account.wpieramprzyrode_api_dev_service_account.name
 }
 
-resource "google_service_account_iam_binding" "wspieramprzyrode_api_dev_role_datastore_binding" {
+resource "google_project_iam_binding" "wspieramprzyrode_api_dev_role_datastore_binding" {
   provider = google-beta
   role     = "roles/datastore.user"
-  service_account_id = google_service_account.wpieramprzyrode_api_dev_service_account.name
-  members = []
+  members = [
+         "serviceAccount:${google_service_account.wpieramprzyrode_api_dev_service_account.email}"
+  ]
 }
