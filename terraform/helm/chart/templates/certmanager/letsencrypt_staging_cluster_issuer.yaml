@@ -16,7 +16,6 @@ spec:
           email: {{ .Values.cloudflare.email }}
           apiTokenSecretRef:
             name: cloudflare-api-token-secret
-            namespace: {{ .Release.Namespace }}
             key: api-token
 {{- end -}}
 {{- end }}
