@@ -46,9 +46,9 @@ jobs:
     - name: Publish to docker registry
       uses: mr-smithers-excellent/docker-build-push@v3
       with:
-        image: app/ui
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
+        image: wspieramprzyrode/ui
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        registry: docker.io
         directory: ui
         dockerfile: ui/Dockerfile

@@ -43,4 +43,4 @@ DNS record for docs subdomain is defined in ```.terraform/cloudflare.tf``` file 
 
 Build process is defined in file ```.gihub/workflows/documentation.yaml```
 
-We build and publish application as docker image ```docker.pkg.github.com/wspieramprzyrode/app/docs```
+We build and publish application as docker image ```wspieramprzyrode/docs```

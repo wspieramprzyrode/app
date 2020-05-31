@@ -13,4 +13,4 @@ We using nextjs with typescript and material-ui.
 
 Build process is defined in file ```.gihub/workflows/ui_test.yaml```
 
-We build and publish application as docker image ```docker.pkg.github.com/wspieramprzyrode/app/ui```
+We build and publish application as docker image ```wspieramprzyrode/app/ui```
