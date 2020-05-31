@@ -2,4 +2,4 @@ apiVersion: v2
 name: chart
 description: cluster resources
 type: application
-version: 0.1.2
+version: 0.1.3
