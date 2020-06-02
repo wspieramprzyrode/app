@@ -15,7 +15,7 @@ title: Getting started
 
 [Wspieram Przyrodę SonarCloud Page](https://sonarcloud.io/organizations/wspieramprzyrode)
 
-Every pull request and branch master are automated checked at app and mobile repositories.
+Every pull request and master branches are checked automatically in the mobile and app repositories.
 
 ## Translations
 
@@ -37,10 +37,10 @@ Files are defined in ```docusaurus``` directory.
 
 Build process is defined in file ```.gihub/workflows/ui_test.yaml```.
 
-Documentation from branch master are deployed as github pages.
+Master branch documentation is released as github pages.
 
 DNS record for docs subdomain is defined in ```.terraform/cloudflare.tf``` file and manage by terrafrom scripts.
 
 Build process is defined in file ```.gihub/workflows/documentation.yaml```
 
-We build and publish application as docker image ```wspieramprzyrode/docs```
+Application is build and publish as docker image ```wspieramprzyrode/docs```

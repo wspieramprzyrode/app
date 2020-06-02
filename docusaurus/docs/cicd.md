@@ -5,7 +5,7 @@ title: GitHub Actions
 
 ## GitHub Actions
 
-All build and deployment process using github actions
+All builds and deployment process are using github actions
 
 ### Add taskfile and k8s tools to github workflow
 

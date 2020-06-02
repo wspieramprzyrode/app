@@ -1,4 +1,4 @@
-{{- if .Values.letsencrypt.stagging -}}
+{{- if .Values.letsencrypt.staging -}}
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:

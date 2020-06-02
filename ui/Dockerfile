@@ -21,10 +21,8 @@ EXPOSE 3000
 ENV NODE_ENV production
 WORKDIR /opt/app
 
-COPY --from=builder  /opt/app/node_modules /opt/app/node_modules
-COPY --from=builder  /opt/app/package.json /opt/app/package.json
-COPY --from=builder  /opt/app/.next /opt/app/.next
-
-
+COPY --from=builder /opt/app/node_modules /opt/app/node_modules
+COPY --from=builder /opt/app/package.json /opt/app/package.json
+COPY --from=builder /opt/app/.next /opt/app/.next
 
 CMD ["npm", "start"]

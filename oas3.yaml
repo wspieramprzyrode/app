@@ -7,8 +7,8 @@ info:
 servers:
   - url: http://api.wspieramprzyrode.pl/v1
     description: Main (production) server
-  - url: http://staging-apiwspieramprzyrode.pl/v1
-    description: Optional server description, e.g. Internal staging server for testing
+  - url: http://staging-api.wspieramprzyrode.pl/v1
+    description: Staging server for testing
 tags:
   - name: inventory
     description: Inventory services

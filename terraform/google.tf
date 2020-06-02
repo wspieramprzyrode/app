@@ -9,7 +9,7 @@ resource "google_firebase_project_location" "firebase_location" {
 }
 resource "google_firebase_web_app" "firebase_app" {
   provider     = google-beta
-  display_name = "WspierajPrzyrode"
+  display_name = "WspieramPrzyrode"
 
   depends_on = [google_firebase_project.firebase_project, google_firebase_project_location.firebase_location]
 }
