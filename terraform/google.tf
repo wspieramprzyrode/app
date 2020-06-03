@@ -9,7 +9,7 @@ resource "google_firebase_project_location" "firebase_location" {
 }
 resource "google_firebase_web_app" "firebase_app" {
   provider     = google-beta
-  display_name = "WspierajPrzyrode"
+  display_name = "WspieramPrzyrode"
 
   depends_on = [google_firebase_project.firebase_project, google_firebase_project_location.firebase_location]
 }
@@ -34,6 +34,6 @@ resource "google_project_iam_binding" "wspieramprzyrode_api_dev_role_datastore_b
   provider = google-beta
   role     = "roles/datastore.user"
   members = [
-         "serviceAccount:${google_service_account.wpieramprzyrode_api_dev_service_account.email}"
+    "serviceAccount:${google_service_account.wpieramprzyrode_api_dev_service_account.email}"
   ]
 }

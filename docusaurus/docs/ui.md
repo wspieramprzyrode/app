@@ -4,10 +4,9 @@ title: UI Component
 sidebar_label: UI Component
 ---
 
-
 ## Basic informations
 
-We using nextjs with typescript and material-ui.
+We are using nextjs with typescript and material-ui.
 
 ### CI
 
