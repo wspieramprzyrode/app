@@ -34,6 +34,6 @@ resource "google_project_iam_binding" "wspieramprzyrode_api_dev_role_datastore_b
   provider = google-beta
   role     = "roles/datastore.user"
   members = [
-         "serviceAccount:${google_service_account.wpieramprzyrode_api_dev_service_account.email}"
+    "serviceAccount:${google_service_account.wpieramprzyrode_api_dev_service_account.email}"
   ]
 }
