@@ -78,7 +78,7 @@ Po wybraniu [budki lęgowej](#obiekt) na mapie [użytkownik](#użytkownik) widzi
 * historie [budki](#obiekt) - czyli zdjęcia [budki](#obiekt) i jej stanu przesłane przez użytkowników
 * przycisk umożliwiający zostanie opiekunem [budki](#obiekt) - wtedy potrzebne jest zalogowania lub założenie konta
 * przycisk umożliwiający [zgłoszenie uszkodzenia budki](#zgłoszenie-uszkodzenia-budki-lęgowej)
-* przycisk umożliwiający zgloszenie obserwacji ptaków wykorzytujących budkę
+* przycisk umożliwiający [zgloszenie obserwacji ptaków wykorzytujących budkę](#informacja-o-zamieszkaniu-budki-l%C4%99gowej)
 * przycisk umożliwiający [wygenerowanie etykiety z qrcode](#znakowanie-budek) dla danej budki lęgowej
 
 #### Dodanie nowej budki lęgowej
@@ -115,7 +115,18 @@ W przypadku kiedy budka taka nie posiada opiekuna informacja taka zostaje wysła
 
 #### Moje budki
 
-Lista budek lęgowych w których [zalogowany użytkownik](#zalogowany-użytkownik) jest przypisany jako opiekun.
+Lista budek lęgowych w których [zalogowany użytkownik](#zalogowany-użytkownik) jest przypisany jako [opiekun budki](#opiekun-obiektu).
+
+#### Informacja o zamieszkaniu budki lęgowej
+
+[Użytkownik](#użytkownik) może zgłosić obserwacje ptaków które zajęły budkę lęgową.
+Na formularzu wpisuje:
+
+* datę opbserwacji ptaków przy budce lęgowej
+* gatunek ptaka
+* posiada opcionalną możliwość dodania zdjęć
+
+Informacja ta zostaje wysłana do opiekuna budki (o ile jest przypisany) oraz do administratorów systemu.
 
 ### Zgłoszenia martwych lub chorych ptaków
 
@@ -154,9 +165,9 @@ Wchodząc na szczegóły widzi podane dane. Posiada on możliwość wejścia w t
 
 #### Edycja obserwacji
 
-[Zalogowany użytkownik](#zalogowany-użytkownik) edytując swoją obserwacje może
+[Zalogowany użytkownik](#zalogowany-użytkownik) edytując swoją obserwacje może:
 
-* dodać lub usunąć zdjęcia
+* dodawać lub usunąć zdjęcia
 * zmienić widoczność oberwacji z publicznej na prywatną i odwrotnie
 * zmienić gatunek ptaka
 * zmienić datę i godzinę
