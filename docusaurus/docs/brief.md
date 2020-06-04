@@ -171,7 +171,7 @@ Formularz zawierający:
 * możliwości dołączenia zdjęć (opcjonalne)
 * wybór czy obserwacja może być widoczna dla wszystkich [użytkowników](#użytkownik) czy jest ona prywatna (domyślnie publiczna)
 
-#### Lista obeserwacji
+#### Lista oberwacji
 
 [Zalogowany użytkownik](#zalogowany-użytkownik) posiada dostęp do listy swoich oberwacji może wybrać jeden w celu zobaczenia szczegółów.
 
@@ -189,6 +189,21 @@ Wchodząc na szczegóły widzi podane dane. Posiada on możliwość wejścia w t
 
 ### Dzikie wysypiska śmieci
 
-#### Zgłoszenie napotkanego wysypiska śmieci
+#### Zgłoszenie nielegalnego wysypiska śmieci
+
+[Użytkownik](#użytkownik) posiada możliwość zgłoszenia nielegalnego wysypiska śmieci podając:
+
+* daty
+* wskazanie na mapie miejsca wysypiska
+* opisu (opcjonalne)
+* załączenie zdjęć
+
+Informacja ta zostaje wysłana do administratora systemu w celu weryfikacji oraz poźniejszego wysłania do służb które odpowiadają na danym terenie.
 
 ### Pomniki przyrody
+
+[Użytkownik](#użytkownik) posiada możliwość zgłoszenia pomnika przyrody:
+
+* wskazanie na mapie miejsca wysypiska
+* opisu (opcjonalne)
+* załączenie zdjęć
