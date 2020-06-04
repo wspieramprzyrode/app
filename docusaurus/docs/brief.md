@@ -52,7 +52,7 @@ zdefiniowany w słowniku ptaków zarządzanym przez [administratora serwisu](#ad
 Aplikacja posiada mapę na której widoczna jest lokalizacja budek lęgowych ptaków.
 
 #### Znakowanie budek
-s
+
 [Użytkownik](#użytkownik) posiada możliwość wygenerowania etykiet w postacie pdf zawierających qrcode zawierający unikatowy identyfikator obiektu.
 
 Po wydrukowaniu użytkownik może oznaczyć obiekt przywieszając go w sposób umożliwiający korzystanie z niego z telefonów komórkowych. Użytkownik powinin uzyskać zgodę właściciela lub zarządzającego na temrenie którego znjaduje się obiekt.
@@ -112,6 +112,20 @@ W przypadku kiedy budka taka nie posiada opiekuna informacja taka zostaje wysła
 #### Usunięcie budki
 
 [Opiekun budki](#opiekun-obiektu) lub [administrator serwisu](#administrator-systemu) może usunąć budkę lęgową podajac przyczynę usunięcia np wycinka drzew.
+
+#### Rezygnacja z opieki nad budką
+
+[Opiekun budki](#opiekun-obiektu) lub [administrator serwisu](#administrator-systemu) może zrezygnować z opieki nad budką
+
+#### Zmiana opiekuna nad budką
+
+[Opiekun budki](#opiekun-obiektu) lub [administrator serwisu](#administrator-systemu) może wysłać zaproszenia na adres email do przejęcia opieki nad budką lęgową.
+
+Po wypisaniu formularza zostanie wysłany email na podany adres zawierający link do potwierdzenia przejęcia opieki.
+
+Kiedy podany email jest podany w bazie użytkowników budka po potwierdzeniu przejęcia zmiania opiekuna.
+
+W przypadku kiedy email nie jest zarejestowany - nowy potencjalny opiekun musi założyć konto w systemie i wtedy potwierdzić przejęcie opieki nad budką lęgową.
 
 #### Moje budki
 
