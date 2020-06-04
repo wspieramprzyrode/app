@@ -3,49 +3,161 @@ id: brief
 title: Opis systemu
 ---
 
-## Załozenia ogolne
+## Założenia ogólne
 
-Aplikacja ma słuzyć  do  pomocy zarzadzania informacjami zwiazanymi z opieka nad roznymi aspektami przyrodniczymi.
+Aplikacja ma służyć do pomocy zarządzania informacjami zwiazanymi z opieką nad rożnymi aspektami przyrodniczymi.
 
-Dostepna w formie ogolnodostpenj aplikacji mobilnej oraz strony www.
+Dostępna w formie ogólnodostępnej aplikacji mobilnej oraz strony www.
 
 ## Definicje
 
-* Uzytkownik - kazda osoba korzystajaca z aplikacji mobilnej lub strony www bez koniecznosci posiadania na niej konta.
-* zalogowany Uzytkownik - uzytkownik ktory dokonal rejestracji w aplikacji mobilnej lub na stronie www
-* typ obiektu - zdefioniowana przez zarzadzajacymi serwisem
-* obiekt - zdefioniowany w sytemie punkt posiadajace wspolrzedne geograficzne
+### Role w systemie
+
+#### użytkownik
+
+każda osoba korzystająca z aplikacji mobilnej lub strony www bez konieczności posiadania w niej konta.
+
+#### zalogowany użytkownik
+
+[użytkownik](#użytkownik) który dokonał rejestracji w aplikacji mobilnej lub na stronie www oraz zweryfikował podane w procesie rejstracyjnym dane.
+
+#### administrator systemu
+
+[zalogowany użytkownik](#zalogowany-użytkownik) posiadający uprawnienia do wszystkich operacji z systemie.
+
+### Obiekty
+
+#### typ obiektu
+
+zdefiniowany przez zarządzającymi serwisem katalog rodzajów obiektów do której mogą zostać przypisane poszczególne obiekty.
+
+#### obiekt
+
+zdefiniowany w sytemie punkt posiadający współrzędne geograficzne oraz typ obiektu.
+
+### Zwierząta
+
+#### gatunek ptaka
+
+zdefiniowany w słowniku ptaków zarządzanym przez [admistatora serwisu](#administrator-systemu)
 
 ## Funkcjonalności
 
-### Zarzadzanie budkami lęgowymi ptaków
+### Zarządzanie budkami lęgowymi ptaków
 
-Aplikacja posiada mape na ktorej widoczna jest lokalizacja budek legowych ptakow.
+Aplikacja posiada mapę na której widoczna jest lokalizacja budek lęgowych ptaków.
 
-Nie zalogowani uzytkownicy posiadają
+#### Znakowanie budek
+[Użytkownik](#użytkownik) posiada możliwość wygenerowania etykiet w postacie pdf zawierających qrcode zawierający unikatowy identyfikator obiektu.
+
+Po wydrukowaniu użytkownik może oznaczyć obiekt przywieszając go w sposób umożliwiający korzystanie z niego z telefonów komórkowych. Użytkownik powinin uzyskać zgodę właściciela lub zarządzającego na temrenie którego znjaduje się obiekt.
+
+Po zrobieniu fotografii tego kodu zostajemy przekierunkowani do aplikacji lub stronę www na cześć ze [szczegółowymi informacjami](#szczegóły-budki-lęgowej) dotyczącymi tego [obiektu](#obiekt).
+
+W przypadku braku danych w systemie jako zalogowany użytkownik rozpoczynami tworzenie nowego obiektu. Użytkownik nie zalogowany proszony jest o stworzenie nowego konta lub zalogwanie się do systemu.
 
 #### Mapa budek
 
-Mapa na ktorej znajduje sie lokalizacja budek legowych oparta na mapie openstreetmap.
+Mapa na której znajduje się lokalizacja budek lęgowych oparta na openstreetmap. Dostępna jest ona dla każdego [użytkownika](#użytkownik) aplikacji.
 
-Podczas otwarcia mapy pobierana jest z api lista budek w oparciu o aktualna lokalizacje uzytkownika. Domyslnie pokazywane mu sa budki znjadujace sie w okolicy.
-W celu łatwiejszej identyfikacji budek poszczegolne typy budek posiadaja inne ikonki oraz kolory ikon w zaleznosci od tego czy dana budka posiada opiekuna lub nie i czy zostala jako uszkodzona.
+Podczas otwarcia mapy pobierana jest z api lista budek w oparciu o aktualna lokalizację [użytkownika](#użytkownik). Domyślnie pokazywane mu są budki znajdujące sie w okolicy.
+W celu łatwiejszej identyfikacji budek poszczególne typy budek posiadają inne ikonki oraz kolory ikon w zależności od tego czy dana budka posiada opiekuna lub nie i czy została zgłoszona jako uszkodzona.
 
-#### Szczegoly budki
+#### Szczegóły budki lęgowej
 
-Po wybraniu budki legowej na mapie widza szczegoly dotyczace budki takie jak
+Po wybraniu [budki lęgowej](#obiekt) na mapie [użytkownik](#użytkownik) widzi szczegóły dotyczące budki:
 
-* typ budki(o ile mozliwa jest jest jest klasyfikacja)
-* ptaki jakie w nich sie najczesciej gniezdza - na podtswie typu budki
-* informacje czy budka posiada opiekuna
-* historie budki - czy zdjecia budki i jej stanu przeslane przez uzytkoniwkow
-* przycisk umozliwiajacy zostanie opiekunen budki - wtedy potrzebne jest zalogowania lub zalozenie konta
-* przycisk umozliwiajacy zgloszenie uszkodzenia budki - formularz z o oknam opisu i dolaczenia zdjec
+* typ budki (o ile możliwa jest jest jest klasyfikacja)
+* ptaki jakie w nich się najcześciej pojawiają - na podstawie typu budki
+* informacje czy [budka](#obiekt) posiada opiekuna
+* historie [budki](#obiekt) - czyli zdjęcia [budki](#obiekt) i jej stanu przesłane przez użytkowników
+* przycisk umożliwiający zostanie opiekunem [budki](#obiekt) - wtedy potrzebne jest zalogowania lub założenie konta
+* przycisk umożliwiający [zgłoszenie uszkodzenia budki](#zgłoszenie-uszkodzenia-budki-lęgowej)
+* przycisk umożliwiający zgloszenie obserwacji ptaków wykorzytujących budkę
+* przycisk umożliwiający [wygenerowanie etykiety z qrcode](#znakowanie-budek) dla danej budki lęgowej
 
+#### Dodanie nowej budki lęgowej
+
+[Zalogowany użytkownik](#zalogowany-użytkownik) może dodać nową budkę lęgową przez wypełnienie formularza:
+
+* wybierając typ budki
+* wskazanie na mapie miejsca z jak największą dokładnością
+* dodanie zdjęcia budki w celu jej identyfikacji
+* wybranie czy osoba zgłaszająca budkę jest jej opiekunem czy nie
+
+W przypadku kiedy [zalogowany użytkownik](#zalogowany-użytkownik) wybiera opcję opiekun budki dodana budka zostaniej dodana do strony Moje budki. Zaczyna on również otrzymywać powiadomienia związene z ta budką.
+
+#### Zgłoszenie uszkodzenia budki lęgowej
+
+[Użytkownik](#użytkownik) posiada możliwość zgłoszenia uszkodzenia lub zniszcznie budki lęgowej poprzez podanie:
+
+* wybierając uszkodzona lub zniszczona z listy wyboru
+* daty
+* opisu (opcjonalne)
+* załączenie zdjecia
+
+W przyapdku kiedy do danej budki lęgowej przypisany jest jej opiekun informacja ta zostanie do niego wysłąna w postaci notyfikacji push oraz wiadomości email. Budka takiej zostanie nadany status zniszczona lub uszkodzona w zależności od statusu.
+
+W przypadku kiedy budka taka nie posiada opiekuna informacja taka zostaje wysłana do administratora systemu
+
+#### Naprawa budki
+
+Opiekun budki lub administator systemu może zmienić status danej budki lęgowej na normalną po naprawie budki załączajać  jej zdjęcie po pracach.
+
+#### Usunięcie budki
+
+Opiekun budki lub administator systemu może usunąć budkę lęgową podajac przyczynę usunięcia np wycinka drzew.
+
+#### Moje budki
+
+Lista budek lęgowych w których [zalogowany użytkownik](#zalogowany-użytkownik) jest przypisany jako opiekun.
 ### Zgłoszenia martwych lub chorych ptaków
 
-Zalogowany uzytkownik posiada mozliwosc zglosznia napotkanych chorych lub martwych ptakow
+[Zalogowany użytkownik](#zalogowany-użytkownik) posiada możliwość zgłoszenia napotkanych chorych lub martwych ptaków poprzez formularz podając
+
+* datę i godzinę
+* wskazanie na mapie miejsca
+* gatunek zaoberwowanych ptaków
+* możliwości dołączenia zdjęć (opcjonalne)
 
 ### Dziennik oberwacji ptaków
 
-Zalogowany uzytkownik moze stworzyc dziennik obserwacji ptakow podajac date i godziny , wskazujac miejsce obserwacji poprzez wskazanie go na mapie, gatunek zaoberwowanych ptakow. Moze dodac rowniez zdjecia.
+#### Mapa obserwacji
+
+[Użytkownik](#użytkownik) widzi na mapie obserwacje wszystkich [użytkowników](#użytkownik) którzy oznaczyli obserwacje jako publiczne.
+
+#### Zarządzanie obserwacjami
+
+[Zalogowany użytkownik](#zalogowany-użytkownik) może stworzyć dziennik obserwacji ptaków.
+
+##### Dodanie obserwacji
+
+Formularz zawierający:
+
+* datę i godzinę obserwacji
+* wskazanie na mapie miejsca obserwacji
+* gatunek zaobserwowanych ptaków
+* możliwości dołączenia zdjęć (opcjonalne)
+* wybór czy obserwacja może być widoczna dla wszystkich [użytkowników](#użytkownik) czy jest ona prywatna (domyślnie publiczna)
+
+#### Lista obeserwacji
+
+[Zalogowany użytkownik](#zalogowany-użytkownik) posiada dostęp do listy swoich oberwacji może wybrać jeden w celu zobaczenia szczegółów.
+
+Wchodząc na szczegóły widzi podane dane. Posiada on możliwość wejścia w tryb edycji lub usunąć oberwację.
+
+#### Edycja obserwacji
+
+[Zalogowany użytkownik](#zalogowany-użytkownik) edytując swoją obserwacje może
+
+* dodać lub usunąć zdjęcia
+* zmienić widoczność oberwacji z publicznej na prywatną i odwrotnie
+* zmienić gatunek ptaka
+* zmienić datę i godzinę
+* zmienić miejsce obserwacji poprzez wybór nowego miejsca z mapy
+
+### Dzikie wysypiska śmieci
+
+#### Zgłoszenie napotkanego wysypiska śmieci
+
+### Pomniki przyrody
