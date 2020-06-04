@@ -1,7 +1,8 @@
 {
     "docs": {
         "Documentation": [
-            "index"
+            "index",
+            "brief"
         ],
         "Infrastructure": [
             "terraform",

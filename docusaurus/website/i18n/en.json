@@ -5,6 +5,9 @@
     "previous": "Previous",
     "tagline": "Application Documentation",
     "docs": {
+      "brief": {
+        "title": "Opis systemu"
+      },
       "cicd": {
         "title": "GitHub Actions"
       },
@@ -21,6 +24,9 @@
         "title": "Kubernetes",
         "sidebar_label": "Kubernetes"
       },
+      "mobile": {
+        "title": "Mobile Application"
+      },
       "terraform": {
         "title": "Terraform",
         "sidebar_label": "Terraform"
@@ -33,7 +39,9 @@
         "title": "Basic"
       }
     },
-    "links": {},
+    "links": {
+      "GitHub": "GitHub"
+    },
     "categories": {
       "Documentation": "Documentation",
       "Infrastructure": "Infrastructure",

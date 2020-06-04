@@ -6,6 +6,7 @@ const siteConfig = {
   projectName: 'app',
   organizationName: 'wspieramprzyrode',
   headerLinks: [
+    { href: "https://github.com/wspieramprzyrode", label: "GitHub" },
     { languages: true },
   ],
   translationRecruitingLink: 'https://crowdin.com/project/wspieramprzyrode',
