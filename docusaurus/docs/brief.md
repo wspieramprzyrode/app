@@ -25,6 +25,10 @@ każda osoba korzystająca z aplikacji mobilnej lub strony www bez konieczności
 
 [zalogowany użytkownik](#zalogowany-użytkownik) posiadający uprawnienia do wszystkich operacji z systemie.
 
+### opiekun obiektu
+
+[zalogowany użytkownik](#zalogowany-użytkownik) który ma przypisane do siebie [obiekty](#obiekt) które ma pod swoim nadzorem
+
 ### Obiekty
 
 #### typ obiektu
@@ -39,7 +43,7 @@ zdefiniowany w sytemie punkt posiadający współrzędne geograficzne oraz typ o
 
 #### gatunek ptaka
 
-zdefiniowany w słowniku ptaków zarządzanym przez [admistatora serwisu](#administrator-systemu)
+zdefiniowany w słowniku ptaków zarządzanym przez [administratora serwisu](#administrator-systemu)
 
 ## Funkcjonalności
 
@@ -48,6 +52,7 @@ zdefiniowany w słowniku ptaków zarządzanym przez [admistatora serwisu](#admin
 Aplikacja posiada mapę na której widoczna jest lokalizacja budek lęgowych ptaków.
 
 #### Znakowanie budek
+s
 [Użytkownik](#użytkownik) posiada możliwość wygenerowania etykiet w postacie pdf zawierających qrcode zawierający unikatowy identyfikator obiektu.
 
 Po wydrukowaniu użytkownik może oznaczyć obiekt przywieszając go w sposób umożliwiający korzystanie z niego z telefonów komórkowych. Użytkownik powinin uzyskać zgodę właściciela lub zarządzającego na temrenie którego znjaduje się obiekt.
@@ -96,21 +101,22 @@ W przypadku kiedy [zalogowany użytkownik](#zalogowany-użytkownik) wybiera opcj
 * opisu (opcjonalne)
 * załączenie zdjecia
 
-W przyapdku kiedy do danej budki lęgowej przypisany jest jej opiekun informacja ta zostanie do niego wysłąna w postaci notyfikacji push oraz wiadomości email. Budka takiej zostanie nadany status zniszczona lub uszkodzona w zależności od statusu.
+W przyapdku kiedy do danej budki lęgowej przypisany jest jej [opiekun](#opiekun-obiektu) informacja ta zostanie do niego wysłana w postaci notyfikacji push oraz wiadomości email. Budka takiej zostanie nadany status zniszczona lub uszkodzona w zależności od statusu.
 
 W przypadku kiedy budka taka nie posiada opiekuna informacja taka zostaje wysłana do administratora systemu
 
 #### Naprawa budki
 
-Opiekun budki lub administator systemu może zmienić status danej budki lęgowej na normalną po naprawie budki załączajać  jej zdjęcie po pracach.
+[Opiekun budki](#opiekun-obiektu) lub [administrator serwisu](#administrator-systemu) może zmienić status danej budki lęgowej na normalną po naprawie budki załączajać  jej zdjęcie po pracach.
 
 #### Usunięcie budki
 
-Opiekun budki lub administator systemu może usunąć budkę lęgową podajac przyczynę usunięcia np wycinka drzew.
+[Opiekun budki](#opiekun-obiektu) lub [administrator serwisu](#administrator-systemu) może usunąć budkę lęgową podajac przyczynę usunięcia np wycinka drzew.
 
 #### Moje budki
 
 Lista budek lęgowych w których [zalogowany użytkownik](#zalogowany-użytkownik) jest przypisany jako opiekun.
+
 ### Zgłoszenia martwych lub chorych ptaków
 
 [Zalogowany użytkownik](#zalogowany-użytkownik) posiada możliwość zgłoszenia napotkanych chorych lub martwych ptaków poprzez formularz podając
