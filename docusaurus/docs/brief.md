@@ -202,8 +202,34 @@ Informacja ta zostaje wysłana do administratora systemu w celu weryfikacji oraz
 
 ### Pomniki przyrody
 
+#### Mapa pominików przyrody
+
+Na mapie [użytkownik](#użytkownik) widzi pomniki przyrody znajdujące się w jego okolicy na postawie aktualnej pozycji. Widoczne są tylko zweryfikowane przez administatora systemu pomniki przyrody
+
+#### Dodanie pomnika przyrody
+
 [Użytkownik](#użytkownik) posiada możliwość zgłoszenia pomnika przyrody:
 
-* wskazanie na mapie miejsca wysypiska
+* wskazanie na mapie miejsca
 * opisu (opcjonalne)
 * załączenie zdjęć
+
+Informacje o dodaniu nowego pomnika przyrody wysyłana jest do administatora systemu w celu jej weryfikacji
+
+#### Szczegóły pomnika przyrody
+
+Po wybraniu na mapie pomnika przyrod widzi szczegóły:
+
+* zdjęcia
+* przycisk umożliwiający [zgłoszenie uszkodzenia pomnika](#zg%C5%82oszenie-informacji-o-zniszczeniu-lub-uszkodzeniu-pomnika-przyrody)
+
+##### Zgłoszenie informacji o zniszczeniu lub uszkodzeniu pomnika przyrody
+
+[Użytkownik](#użytkownik) może zgłosić uszkodzenie lub zniszczenie przyrody
+Na formularzu wpisuje:
+
+* datę
+* opis
+* posiada opcionalną możliwość dodania zdjęć
+
+Informacja ta zostaje wysłana do administratorów systemu w celu weryfikacji i przekazania do odpowiednuch służb.
