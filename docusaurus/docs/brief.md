@@ -25,7 +25,7 @@ każda osoba korzystająca z aplikacji mobilnej lub strony www bez konieczności
 
 [zalogowany użytkownik](#zalogowany-użytkownik) posiadający uprawnienia do wszystkich operacji z systemie.
 
-### opiekun obiektu
+#### opiekun obiektu
 
 [zalogowany użytkownik](#zalogowany-użytkownik) który ma przypisane do siebie [obiekty](#obiekt) które ma pod swoim nadzorem
 
@@ -33,11 +33,14 @@ każda osoba korzystająca z aplikacji mobilnej lub strony www bez konieczności
 
 #### typ obiektu
 
-zdefiniowany przez zarządzającymi serwisem katalog rodzajów obiektów do której mogą zostać przypisane poszczególne obiekty.
+zdefiniowany przez zarządzającymi serwisem katalog rodzajów obiektów do której mogą zostać przypisane poszczególne obiekty np:
+
+* budka lęgowa ptaków
+* pomnik przyrody
 
 #### obiekt
 
-zdefiniowany w sytemie punkt posiadający współrzędne geograficzne oraz typ obiektu.
+zdefiniowany w sytemie punkt posiadający współrzędne geograficzne oraz [typ obiektu](#typ-obiektu)
 
 ### Zwierząta
 
