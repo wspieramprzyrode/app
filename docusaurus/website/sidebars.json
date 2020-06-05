@@ -6,18 +6,23 @@
         ],
         "Infrastructure": [
             "terraform",
-            "kubernetes"
+            "kubernetes",
+            "integrations"
         ],
         "CI/CD": [
             "cicd"
         ],
-        "Web Application": [
-            "web",
-            "ui",
+        "Aplikacja web": [
+            "ui"
+        ],
+        "Serwisy API": [
             "inventory"
         ],
-        "Mobile Application": [
+        "Aplikacja mobilna": [
             "mobile"
+        ],
+        "Dokumentacja":[
+            "documentation"
         ]
     }
 }

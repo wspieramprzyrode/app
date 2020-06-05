@@ -1,18 +1,15 @@
 const siteConfig = {
-  title: 'docs.wspieramprzyrode.pl ',
-  tagline: 'Application Documentation',
+  title: 'Wspieram przyrodę ',
+  tagline: 'Dokumentacja',
   url: 'https://docs.wspieramprzyrode.pl',
   baseUrl: '/',
   projectName: 'app',
   organizationName: 'wspieramprzyrode',
   headerLinks: [
-    { href: "https://github.com/wspieramprzyrode", label: "GitHub" },
-    { languages: true },
+    { href: "https://github.com/wspieramprzyrode/app", label: "GitHub App" },
+    { href: "https://github.com/wspieramprzyrode/mobile", label: "GitHub Mobile" },
   ],
-  translationRecruitingLink: 'https://crowdin.com/project/wspieramprzyrode',
   disableHeaderTitle: true,
-  headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
   favicon: 'img/favicon.ico',
   colors: {
     primaryColor: "#2F1666",

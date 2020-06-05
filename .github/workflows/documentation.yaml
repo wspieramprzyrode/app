@@ -24,9 +24,11 @@ jobs:
     - name: install
       working-directory: ./docusaurus/website
       run: npm install
+
     - name: write translations files
       working-directory: ./docusaurus/website
       run: npm run write-translations
+
     - name: build
       working-directory: ./docusaurus/website
       run: npm run build
@@ -46,6 +48,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
+
     - name: Publish to docker registry
       uses: mr-smithers-excellent/docker-build-push@v3
       with:
