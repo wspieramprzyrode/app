@@ -12,7 +12,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v1
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
+          terraform_version: 0.12.26
       - run: terraform init
         working-directory: terraform
       - run: terraform fmt --check -no-color
