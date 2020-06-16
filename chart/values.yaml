@@ -1,0 +1,14 @@
+nameOverride: ""
+fullnameOverride: ""
+global:
+  domain: example.com
+  apiDomainPrefix: api
+  uiDomainPrefix: www
+  certManagerClusterIssuer: letsencrypt-prod
+  ambassador:
+    enabled: false
+    tls: false
+  googleCloud:
+    secretName: google-application-credentials
+inventory:
+  enabled: false

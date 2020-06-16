@@ -6,7 +6,9 @@ sidebar_label: UI Component
 
 ## Basic informations
 
-We are using nextjs with typescript and material-ui.
+Component directory in github repo structure: ```ui```
+
+We using nextjs with typescript and material-ui.
 
 ### CI
 

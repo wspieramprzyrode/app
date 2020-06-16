@@ -7,8 +7,10 @@ info:
 servers:
   - url: http://api.wspieramprzyrode.pl/v1
     description: Main (production) server
-  - url: http://staging-api.wspieramprzyrode.pl/v1
-    description: Staging server for testing
+  - url: http://api-staging.wspieramprzyrode.pl/v1
+    description: Internal staging server for testing
+  - url: http://api-dev.wspieramprzyrode.pl/v1
+    description: Internal staging server for developers
 tags:
   - name: inventory
     description: Inventory services
@@ -23,6 +25,22 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ListOfObjectCategories"
+    post:
+      summary: Add a new inventory category
+      operationId: "CreateObjectCategory"
+      tags:
+        - inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectCategoryName'
+            example:
+              name: "Budka lęgowa"
+      responses:
+        "200":
+          $ref: "#/components/schemas/ObjectCategoryId"
   /inventory/objects:
     get:
       tags:
@@ -77,6 +95,8 @@ components:
     ObjectCategoryId:
       type: string
       format: uuid
+    ObjectCategoryName:
+      type: string
     ObjectCategory:
       type: "object"
       title: Inventory Category
@@ -86,7 +106,7 @@ components:
         id:
           $ref: '#/components/schemas/ObjectCategoryId'
         name:
-          type: "string"
+          $ref: '#/components/schemas/ObjectCategoryName'
     Coordinates:
       type: "object"
       title: Coordinates
@@ -116,7 +136,6 @@ components:
           $ref: '#/components/schemas/ObjectCategoryId'
         coordinates:
           $ref: "#/components/schemas/Coordinates"
-
   responses:
     NotFound:
       description: The specified resource was not found

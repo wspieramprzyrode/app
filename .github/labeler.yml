@@ -5,3 +5,7 @@ ui:
 documentation:
   - docusaurus/**/*
   - oas3.yaml
+inventory-service:
+  - inventory/**/*
+helm-chart:
+  - chart/**/*
