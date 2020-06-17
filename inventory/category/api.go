@@ -2,6 +2,7 @@ package category
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/google/uuid"
 	"github.com/wspieramprzyrode/mobile/inventory/datastore"
@@ -12,8 +13,8 @@ type category struct {
 	coll *docstore.Collection
 }
 
-func New(ctx context.Context) (*category, error) {
-	categoryColl, err := datastore.New(ctx, "firebase", "wspieramprzyrode", "categories", "ID")
+func New(ctx context.Context, projectID, appEnv string) (*category, error) {
+	categoryColl, err := datastore.New(ctx, "firebase", projectID, fmt.Sprintf("inventory_categories_%s", appEnv), "ID")
 	if err != nil {
 		return nil, err
 	}

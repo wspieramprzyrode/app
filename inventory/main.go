@@ -3,10 +3,13 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
+	firebase "firebase.google.com/go"
 	ginzap "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
+	"github.com/wspieramprzyrode/mobile/inventory/auth"
 	"github.com/wspieramprzyrode/mobile/inventory/category"
 	"github.com/wspieramprzyrode/mobile/inventory/objects"
 	"go.uber.org/zap"
@@ -15,16 +18,27 @@ import (
 
 func main() {
 	ctx := context.Background()
+	appEnv := os.Getenv("APP_ENV")
+	projectID := os.Getenv("GCP_PROJECT_ID")
 	logger, err := zap.NewProduction()
 	if err != nil {
 		log.Fatalln(err)
 	}
-	category, err := category.New(ctx)
+	app, err := firebase.NewApp(ctx, nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	cl, err := app.Auth(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	category, err := category.New(ctx, projectID, appEnv)
 	if err != nil {
 		logger.Fatal(err.Error())
 	}
 	defer category.Close()
-	objects, err := objects.New(ctx)
+	objects, err := objects.New(ctx, projectID, appEnv)
 	if err != nil {
 		logger.Fatal(err.Error())
 	}
@@ -41,7 +55,7 @@ func main() {
 	{
 		objectsRoutes.Use(ginzap.Ginzap(logger, time.RFC3339, true))
 		objectsRoutes.GET("", objects.InventoryObjectsListHandler())
-		objectsRoutes.POST("", objects.InventoryCreateObjectHandler())
+		objectsRoutes.POST("", auth.AuthMiddleware(cl), objects.InventoryCreateObjectHandler())
 	}
 
 	router.GET("/health", HealthGET)

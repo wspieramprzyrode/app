@@ -10,6 +10,16 @@ We using golang to create this service.
 
 It use Google Firestore as data storage created by terraform - defined in file ```terraform/google.tf```.
 
+### Developers settings
+
+Env variables
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
+export APP_ENV=local
+export GCP_PROJECT_ID=wspieramprzyrode
+```
+
 ### CI
 
 Build process is defined in file ```.gihub/workflows/inventory_service.yaml```

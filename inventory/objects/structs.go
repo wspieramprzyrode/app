@@ -8,6 +8,7 @@ type InventoryObject struct {
 	ID               InventoryObjectID   `json:"id,omitempty"`
 	CategoryID       category.CategoryID `json:"category_id" binding:"required"`
 	Coordinates      Coordinates         `json:"coordinates" binding:"required"`
+	CreatedBy        string              `json:"-"`
 	DocstoreRevision interface{}         `json:"-"`
 }
 

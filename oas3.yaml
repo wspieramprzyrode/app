@@ -5,11 +5,11 @@ info:
   license:
     name: "MIT"
 servers:
-  - url: http://api.wspieramprzyrode.pl/v1
+  - url: https://api.wspieramprzyrode.pl/v1
     description: Main (production) server
-  - url: http://api-staging.wspieramprzyrode.pl/v1
+  - url: https://api-staging.wspieramprzyrode.pl/v1
     description: Internal staging server for testing
-  - url: http://api-dev.wspieramprzyrode.pl/v1
+  - url: https://api-dev.wspieramprzyrode.pl/v1
     description: Internal staging server for developers
 tags:
   - name: inventory
@@ -21,6 +21,7 @@ paths:
       operationId: "GetObjectCategories"
       tags:
         - inventory
+        - categories
       parameters: []
       responses:
         "200":
@@ -30,6 +31,7 @@ paths:
       operationId: "CreateObjectCategory"
       tags:
         - inventory
+        - categories
       requestBody:
         required: true
         content:
@@ -40,11 +42,12 @@ paths:
               name: "Budka lęgowa"
       responses:
         "200":
-          $ref: "#/components/schemas/ObjectCategoryId"
+          $ref: "#/components/schemas/ObjectId"
   /inventory/objects:
     get:
       tags:
         - inventory
+        - objects
       summary: "Returns object inventories"
       description: "Returns list object in inventory"
       operationId: "GetObjects"
@@ -52,21 +55,40 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ListOfObjects"
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - inventory
+        - objects
+      summary: "Create inventory object"
+      description: "add new object to inventory"
+      operationId: "CreateObject"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateObject'
+            example:
+              category_id: "0353C229-9522-48BA-8EF3-854EFDDED212"
+              coordinates:
+                lat: 50.306472
+                lng: 18.602258
+      responses:
+        "201":
+          $ref: "#/components/schemas/ObjectId"
+        "401":
+          $ref: '#/components/responses/Unauthorized'
   /inventory/objects/{id}:
     get:
       tags:
         - inventory
+        - objects
       summary: "Returns inventory object"
       description: "Returns details of object"
       operationId: "GetObjectByID"
       parameters:
-        - in: header
-          name: X-Request-ID
-          schema:
-            type: string
-          required: true
-          example:
-            X-Request-ID: "0353C229-9522-48BA-8EF3-854EFDDED212"
         - in: path
           name: id
           description: Object ID
@@ -81,6 +103,11 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Error:
       type: object
@@ -136,6 +163,17 @@ components:
           $ref: '#/components/schemas/ObjectCategoryId'
         coordinates:
           $ref: "#/components/schemas/Coordinates"
+    CreateObject:
+      type: "object"
+      title: Create object
+      required:
+        - category_id
+        - coordinates
+      properties:
+        category_id:
+          $ref: '#/components/schemas/ObjectCategoryId'
+        coordinates:
+          $ref: "#/components/schemas/Coordinates"
   responses:
     NotFound:
       description: The specified resource was not found
@@ -182,7 +220,7 @@ components:
                 lat: 50.306472
                 lng: 18.602258
             - id: 40749299-E630-4276-92A9-0856E449F19A
-              categoryId: 58162552-24EA-40D5-B40A-664190D410BC
+              category_id: 58162552-24EA-40D5-B40A-664190D410BC
               coordinates:
                 lat: 50.306880
                 lng: 118.604721

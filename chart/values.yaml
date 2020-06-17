@@ -1,6 +1,8 @@
 nameOverride: ""
 fullnameOverride: ""
 global:
+  appEnv: dev
+  gcpProjectId: wspieramprzyrode
   domain: example.com
   apiDomainPrefix: api
   uiDomainPrefix: www
