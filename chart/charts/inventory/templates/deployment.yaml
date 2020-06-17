@@ -38,6 +38,10 @@ spec:
               value: /var/secrets/google/credentials.json
             - name: GIN_MODE
               value: {{ .Values.mode }}
+            - name: APP_ENV
+              value: {{ .Values.global.appEnv }}
+            - name: GCP_PROJECT_ID
+              value: {{ .Values.global.gcpProjectId }}
           ports:
             - name: http
               containerPort: 8080

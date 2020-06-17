@@ -2,6 +2,7 @@ package objects
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/google/uuid"
 	"github.com/wspieramprzyrode/mobile/inventory/datastore"
@@ -12,8 +13,8 @@ type objects struct {
 	coll *docstore.Collection
 }
 
-func New(ctx context.Context) (*objects, error) {
-	coll, err := datastore.New(ctx, "firebase", "wspieramprzyrode", "inventory_objects", "ID")
+func New(ctx context.Context, projectID, appEnv string) (*objects, error) {
+	coll, err := datastore.New(ctx, "firebase", projectID, fmt.Sprintf("inventory_objects_%s", appEnv), "ID")
 	if err != nil {
 		return nil, err
 	}
